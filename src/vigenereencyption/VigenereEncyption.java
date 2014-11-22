@@ -17,31 +17,31 @@ public class VigenereEncyption {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String keyword = "LEMON";
-        int[] numA = new int[text.length()];
-        int[] numkey = new int[text.length()];
-        char[] key = new char[text.length()];
+        
+      
         int option = 0;
         
         System.out.println("Please insert you text");
-        text = input.nextLine();
+        String text = input.nextLine();
         System.out.println("Please insert your key");
-        keyword=input.nextLine();
+        String keyword=input.nextLine();
         System.out.println("Insert [1] Encryption [2] Decryption");
         option=input.nextInt();
         
+        int[] numA = new int[text.length()];
+        int[] numkey = new int[text.length()];
+        char[] key = new char[text.length()];
         
         //get num for every letter in text and store it in int array
         for(int i = 0;  i < numA.length;i++ ){
             char chartemp = text.charAt(i);
             numA[i] =  Character.getNumericValue(chartemp)-10;
-            //System.out.println(chartemp + " = "+numA[i]);
+           // System.out.println(chartemp + " = "+numA[i]);
         }
         
         //get num for every letter for keyword and store it in int array
         int y=0;
-        for(int i = 0;  i < numkey.length;i++ ){
+        for(int i = 0;  i < text.length();i++ ){
            
             if(y==keyword.length()){
                 y=0;
@@ -80,6 +80,7 @@ public class VigenereEncyption {
         char[] encytext = new char[text.length];
         System.out.println("Encryption");
         for(int a=0; a<text.length;a++){
+            
             encnum[a] = (text[a] + key[a])%26;
             encytext[a] = letter.charAt(encnum[a]);
             System.out.print(encytext[a]);   
